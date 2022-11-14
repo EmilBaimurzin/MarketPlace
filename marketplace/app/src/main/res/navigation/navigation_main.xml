@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/fragmentMain">
+
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="com.marketplace.main.FragmentMain"
+        android:label="FragmentMain" >
+        <action
+            android:id="@+id/action_fragmentMain_to_filterOptionDialog"
+            app:destination="@id/filterOptionDialog" />
+        <action
+            android:id="@+id/action_fragmentMain_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/filterOptionDialog"
+        android:name="com.marketplace.main.filter_options.FilterOptionDialog"
+        android:label="FilterOptionDialog" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.marketplace.product_details.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <argument
+            android:name="details"
+            app:argType="com.marketplace.networking.SmartphoneDetailsNet" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCart"
+        android:name="com.marketplace.cart.FragmentCart"
+        android:label="FragmentCart" />
+</navigation>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Marketplace</string>
+    <string name="select_category">Select Category</string>
+    <string name="hot_sales">Hot Sales</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="buy_now">Buy Now!</string>
+    <string name="the_new">New!</string>
+    <string name="done">DONE</string>
+    <string name="filter_options">Filter Options</string>
+    <string name="brand">Brand</string>
+    <string name="size">Size</string>
+    <string name="min_price">Min price</string>
+    <string name="max_price">Max price</string>
+    <string name="price">Price</string>
+    <string name="product_details">Product Details</string>
+    <string name="shop">Shop</string>
+    <string name="details">Details</string>
+    <string name="features">Features</string>
+    <string name="select_color_and_capacity">Select color and capacity</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="my_cart">My Cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="delivery">Delivery</string>
+    <string name="total">Total</string>
+    <string name="free">Free</string>
+</resources>

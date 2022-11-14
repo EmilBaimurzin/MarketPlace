@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F5F5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/select_category"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_category" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            tools:text="Searching"
+            android:textColor="@color/black"
+            android:paddingStart="45dp"
+            android:paddingEnd="12dp"
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/round_background"
+            app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/search_vector"
+            app:layout_constraintBottom_toBottomOf="@+id/searchEditText"
+            app:layout_constraintStart_toStartOf="@id/searchEditText"
+            app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView" />
+
+        <TextView
+            android:id="@+id/HotSalesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/hot_sales"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchEditText" />
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/hotSaleViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:layout_constraintTop_toBottomOf="@+id/HotSalesTextView" />
+
+        <TextView
+            android:id="@+id/BestSellerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/best_seller"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hotSaleViewPager" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bestSellerRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/BestSellerTextView"
+            tools:layout_editor_absoluteX="0dp"
+            tools:listitem="@layout/item_best_seller" />
+
+        <ImageButton
+            android:id="@+id/filterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="#F5F5F5"
+            android:src="@drawable/filter_vector"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
