@@ -38,4 +38,12 @@ class FragmentMainViewModel : ViewModel() {
             details(repository.getSmartphoneDetails())
         }
     }
+
+    fun getBestSellerPreview(): MutableList<BestSellerItem> {
+        return repository.getBestSellerPreview()
+    }
+
+    fun getHotSalesPreview(): MutableList<HotSaleItems> {
+        return repository.getHotSalesPreview()
+    }
 }

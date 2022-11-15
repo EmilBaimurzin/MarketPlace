@@ -35,30 +35,36 @@ class BestSellerViewHolder(
     var itemClickListener: ((Int) -> Unit)? = null
 
     fun bind(item: BestSellerItem) {
-        binding.apply {
-            nameTextView.text = item.title
-            salePriceTextView.text = item.priceWithoutDiscount.toString() + "$"
-            normalPriceTextView.text = item.discountPrice.toString() + "$"
-            normalPriceTextView.paintFlags =
-                normalPriceTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        if (!item.isPreview) {
+            binding.apply {
+                nameTextView.text = item.title
+                salePriceTextView.text = item.priceWithoutDiscount.toString() + "$"
+                normalPriceTextView.text = item.discountPrice.toString() + "$"
+                normalPriceTextView.paintFlags =
+                    normalPriceTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                Glide.with(context)
+                    .load(item.picture)
+                    .placeholder(R.drawable.placeholder_image)
+                    .into(previewImageView)
+
+                if (item.isFavorites) {
+                    Glide.with(context)
+                        .load(R.drawable.heart_on)
+                        .into(favoritesImageView)
+                } else {
+                    Glide.with(context)
+                        .load(R.drawable.heart_off)
+                        .into(favoritesImageView)
+                }
+
+                root.setOnClickListener {
+                    itemClickListener?.invoke(0)
+                }
+            }
+        } else {
             Glide.with(context)
-                .load(item.picture)
-                .placeholder(R.drawable.placeholder_image)
-                .into(previewImageView)
-
-            if (item.isFavorites) {
-                Glide.with(context)
-                    .load(R.drawable.heart_on)
-                    .into(favoritesImageView)
-            } else {
-                Glide.with(context)
-                    .load(R.drawable.heart_off)
-                    .into(favoritesImageView)
-            }
-
-            root.setOnClickListener {
-                itemClickListener?.invoke(0)
-            }
+                .load(R.drawable.placeholder_image)
+                .into(binding.previewImageView)
         }
     }
 }
@@ -69,4 +75,5 @@ data class BestSellerItem(
     val priceWithoutDiscount: Int,
     val isFavorites: Boolean,
     val picture: String,
+    val isPreview: Boolean = false,
 )

@@ -85,27 +85,49 @@ class FragmentMainRepository {
         return suspendCoroutine { continuation ->
             CoroutineScope(Dispatchers.IO).launch {
                 withContext(Dispatchers.IO) {
-                    Network.mainInterface.getSmartphoneDetails().enqueue(object : Callback<SmartphoneDetailsNet> {
-                        override fun onResponse(
-                            call: Call<SmartphoneDetailsNet>,
-                            response: Response<SmartphoneDetailsNet>,
-                        ) {
-                            if (response.isSuccessful) {
-                                val smartphoneDetails = response.body()
-                                continuation.resume(smartphoneDetails)
-                            } else {
+                    Network.mainInterface.getSmartphoneDetails()
+                        .enqueue(object : Callback<SmartphoneDetailsNet> {
+                            override fun onResponse(
+                                call: Call<SmartphoneDetailsNet>,
+                                response: Response<SmartphoneDetailsNet>,
+                            ) {
+                                if (response.isSuccessful) {
+                                    val smartphoneDetails = response.body()
+                                    continuation.resume(smartphoneDetails)
+                                } else {
+                                    continuation.resume(null)
+                                }
+                            }
+
+                            override fun onFailure(call: Call<SmartphoneDetailsNet>, t: Throwable) {
+                                Log.e("error", "unable to get products", t)
                                 continuation.resume(null)
                             }
-                        }
-
-                        override fun onFailure(call: Call<SmartphoneDetailsNet>, t: Throwable) {
-                            Log.e("error", "unable to get products", t)
-                            continuation.resume(null)
-                        }
-                    })
+                        })
                 }
             }
         }
     }
 
+    fun getHotSalesPreview(): MutableList<HotSaleItems> {
+        return mutableListOf(HotSaleItems(
+            isNew = false,
+            title = "",
+            description = "",
+            image = "",
+            isPreview = true))
+    }
+
+    fun getBestSellerPreview(): MutableList<BestSellerItem> {
+        val list = mutableListOf<BestSellerItem>()
+        repeat(4) {
+            list.add(BestSellerItem(title = "",
+                discountPrice = 0,
+                priceWithoutDiscount = 0,
+                isFavorites = false,
+                picture = "",
+                isPreview = true))
+        }
+        return list
+    }
 }

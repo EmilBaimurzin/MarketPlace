@@ -43,7 +43,8 @@ class FragmentMain : ViewBindingFragment<FragmentMainBinding>(FragmentMainBindin
             delay(10)
             val bottomNavigation =
                 requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
-            bottomNavigation.background = resources.getDrawable(R.drawable.two_round_corners_background)
+            bottomNavigation.background =
+                resources.getDrawable(R.drawable.two_round_corners_background)
 
         }
 
@@ -89,8 +90,24 @@ class FragmentMain : ViewBindingFragment<FragmentMainBinding>(FragmentMainBindin
             }
             setHasFixedSize(true)
         }
+        bestSellerAdapter.items = viewModel.getBestSellerPreview()
         bestSellerAdapter.itemClickListener = {
-            viewModel.getSmartphoneDetails {
+            onItemClicked()
+        }
+    }
+
+    private fun initHotSaleList() {
+        hotSaleAdapter = HotSaleAdapter()
+        binding.hotSaleViewPager.adapter = hotSaleAdapter
+        hotSaleAdapter.itemClickListener = {
+            onItemClicked()
+        }
+        hotSaleAdapter.items = viewModel.getHotSalesPreview()
+    }
+
+    private fun onItemClicked() {
+        viewModel.getSmartphoneDetails {
+            try {
                 it?.let { details ->
                     lifecycleScope.launch(Dispatchers.Main) {
                         findNavController().navigate(FragmentMainDirections.actionFragmentMainToProductDetailsFragment(
@@ -98,12 +115,8 @@ class FragmentMain : ViewBindingFragment<FragmentMainBinding>(FragmentMainBindin
                     }
                 } ?: Toast.makeText(requireContext(), "Unable to get Data", Toast.LENGTH_SHORT)
                     .show()
+            } catch (_: Throwable) {
             }
         }
-    }
-
-    private fun initHotSaleList() {
-        hotSaleAdapter = HotSaleAdapter()
-        binding.hotSaleViewPager.adapter = hotSaleAdapter
     }
 }
