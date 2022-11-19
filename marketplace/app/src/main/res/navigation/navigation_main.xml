@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentMain"
-        android:name="com.marketplace.main.FragmentMain"
+        android:name="com.marketplace.Feature.Main.FragmentMain"
         android:label="FragmentMain" >
         <action
             android:id="@+id/action_fragmentMain_to_filterOptionDialog"
@@ -17,18 +17,18 @@
     </fragment>
     <dialog
         android:id="@+id/filterOptionDialog"
-        android:name="com.marketplace.main.filter_options.FilterOptionDialog"
+        android:name="com.marketplace.Feature.Filter_options.FilterOptionDialog"
         android:label="FilterOptionDialog" />
     <fragment
         android:id="@+id/productDetailsFragment"
-        android:name="com.marketplace.product_details.ProductDetailsFragment"
+        android:name="com.marketplace.Feature.Product_details.ProductDetailsFragment"
         android:label="ProductDetailsFragment" >
         <argument
             android:name="details"
-            app:argType="com.marketplace.networking.SmartphoneDetailsNet" />
+            app:argType="com.marketplace.Common.networking.SmartphoneDetailsNet" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCart"
-        android:name="com.marketplace.cart.FragmentCart"
+        android:name="com.marketplace.Feature.Cart.FragmentCart"
         android:label="FragmentCart" />
 </navigation>

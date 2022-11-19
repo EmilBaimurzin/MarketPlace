@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/fragmentContainer2"
-        android:name="com.marketplace.others.FragmentContainer"
+        android:name="com.marketplace.Feature.Containers.FragmentContainer"
         android:label="FragmentContainer" />
 </navigation>
